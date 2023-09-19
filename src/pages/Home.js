@@ -7,7 +7,7 @@ const Home = () => {
   const { products } = useContext(ProductContext);
 
   const filteredProducts = products.filter(item => {
-    return item.category === "jewelery" || item.category === "women's clothing" || item.category === "electronics" ||
+    return item.category === "jewelery" || item.category === "women's clothing" ||
       item.category === "men's clothing"
   });
 
