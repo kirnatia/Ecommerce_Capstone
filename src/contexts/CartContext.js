@@ -14,7 +14,7 @@ const CartProvider = ({ children }) => {
         currentItem.amount
     }, 0);
     setTotal(total);
-  })
+  },[cart])
   useEffect(() => {
     if (cart) {
       const amount = cart.reduce((accumulator, currentItem) => {
