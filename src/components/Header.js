@@ -22,14 +22,18 @@ const Header = () => {
       <div className='container mx-auto flex items-center
       justify-between h-full'>
         <Link to={`/`}>
-          <div className='w-[60px] ml-[-20px] mt-[-20px] relative'>
-            <img src={Logo} alt=""/>
+        
+          <div className="w-[60px] ml-[-20px] mt-[-20px] relative">
+            <img src={Logo} alt="" />
           </div>
+    
         </Link>
         <Link to={`/`}>
+       
           <div className='w-[60px] ml-[-20px] mt-[-20px] relative'>
           <span>Home</span>
-          </div>
+            </div>
+           
         </Link>
         <Link to={`/login`}>
           <div className='w-[60px] ml-[-20px] mt-[-20px] relative'>

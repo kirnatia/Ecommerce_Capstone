@@ -11,7 +11,7 @@ const ProductDetails = () => {
   const product = products.find((item) => item.id === parseInt(id));
 
   if (!product) {
-    // Consider using a loading spinner or animation here
+ 
     return (
       <section className='h-screen flex justify-center items-center'>
         Loading...
