@@ -51,7 +51,7 @@ const Header = () => {
         >
            
           <BsBag className='text-2xl' />
-          <div className='bg-red-500 absolute -right-2 
+          <div className='bg-orange-500 absolute -right-2 
           -bottom-2 text-[16px] w-[18px] text-white
           rounded-full flex justify-center items-center'>{itemAmount}</div>
         </div>

@@ -26,7 +26,7 @@ const Dashboard = () => {
       price: 30.0,
       amount: 1,
     },
-    // Add more items as needed
+  
   ];
 
   return (

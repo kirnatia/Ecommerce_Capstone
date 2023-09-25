@@ -14,7 +14,8 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import Admin from "./components/Admin";
-import CartItem from "./components/CartItem";
+// import CartItem from "./components/CartItem";
+import Landing from "./pages/Landing"
 
 
 
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/landing" element={<Landing />} />
         
           <Route
             path="/"
