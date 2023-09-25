@@ -26,16 +26,36 @@ const Header = () => {
             <img src={Logo} alt=""/>
           </div>
         </Link>
+        <Link to={`/`}>
+          <div className='w-[60px] ml-[-20px] mt-[-20px] relative'>
+          <span>Home</span>
+          </div>
+        </Link>
+        <Link to={`/login`}>
+          <div className='w-[60px] ml-[-20px] mt-[-20px] relative'>
+          <span>Login</span>
+          </div>
+        </Link>
+        <Link to={`/signup`}>
+          <div className='w-[60px] ml-[-20px] mt-[-20px] relative'>
+          <span>Register</span>
+          </div>
+        </Link>
         <div
           onClick={() => setIsOpen(!isOpen)}
           className='cursor-pointer flex relative'
         >
+           
           <BsBag className='text-2xl' />
           <div className='bg-red-500 absolute -right-2 
           -bottom-2 text-[16px] w-[18px] text-white
           rounded-full flex justify-center items-center'>{itemAmount}</div>
         </div>
+     
       </div>
+      {/* <div>
+          <NavBar className="w-[60px] ml-[-20px] mt-[-20px] relative"/>
+          </div> */}
     </header>
   );
 };
