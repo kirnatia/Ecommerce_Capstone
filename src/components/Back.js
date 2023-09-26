@@ -19,7 +19,8 @@ const BackPic = () => {
         </div>
         <div className="md:w-2/1">
           <img
-            className="h-auto w-full max-w-lg transition-all duration-300 rounded-lg cursor-pointer filter grayscale hover:grayscale-0"
+            className="h-auto w-full max-w-lg transition-all duration-300 
+            rounded-lg cursor-pointer filter grayscale hover:grayscale-0"
             src={Background}
             alt=""
           />

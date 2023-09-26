@@ -5,33 +5,38 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [itemAmount, setItemAmount] = useState(0);
-
   const [total, setTotal] = useState(0);
 
+  // Load cart data from local storage when the app starts
   useEffect(() => {
-    const total = cart.reduce((accumulator, currentItem) => {
-      return accumulator + currentItem.price *
-        currentItem.amount
-    }, 0);
-    setTotal(total);
-  },[cart])
+    const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
+    setCart(storedCart);
+  }, []);
+
+  // Save cart data to local storage whenever the cart changes
   useEffect(() => {
-    if (cart) {
-      const amount = cart.reduce((accumulator, currentItem) => {
-        return accumulator + currentItem.amount;
-      }, 0);
-      setItemAmount(amount);
-}
-  },[cart])
+    localStorage.setItem("cart", JSON.stringify(cart));
+    
+    // Update total and itemAmount when cart changes
+    const newTotal = cart.reduce(
+      (accumulator, currentItem) =>
+        accumulator + currentItem.price * currentItem.amount,
+      0
+    );
+    setTotal(newTotal);
+
+    const newAmount = cart.reduce(
+      (accumulator, currentItem) => accumulator + currentItem.amount,
+      0
+    );
+    setItemAmount(newAmount);
+  }, [cart]);
+
   const addToCart = (product, id) => {
     const newItem = { ...product, amount: 1 };
-
-    // Check if the item is already in the cart
     const cartItem = cart.find((item) => item.id === id);
 
-    // If cart item is already in the cart
     if (cartItem) {
-      // If cart item exists, update the amount
       const newCart = cart.map((item) => {
         if (item.id === id) {
           return { ...item, amount: item.amount + 1 };
@@ -41,7 +46,6 @@ const CartProvider = ({ children }) => {
       });
       setCart(newCart);
     } else {
-      // If item doesn't exist, add it to the cart
       setCart([...cart, newItem]);
     }
   };
@@ -51,25 +55,20 @@ const CartProvider = ({ children }) => {
     setCart(newCart);
   };
 
-  // Clear cart
   const clearCart = () => {
     setCart([]);
   };
 
-  // Increase amount
   const increaseAmount = (id) => {
-    const cartItem = cart.find(item => item.id === id);
+    const cartItem = cart.find((item) => item.id === id);
     addToCart(cartItem, id);
-    
   };
 
-  // Decrease amount
   const decreaseAmount = (id) => {
-    const cartItem = cart.find(item => {
-      return item.id === id;
-    });
+    const cartItem = cart.find((item) => item.id === id);
+
     if (cartItem) {
-      const newCart = cart.map(item => {
+      const newCart = cart.map((item) => {
         if (item.id === id) {
           return { ...item, amount: cartItem.amount - 1 };
         } else {
@@ -77,13 +76,12 @@ const CartProvider = ({ children }) => {
         }
       });
       setCart(newCart);
-    } 
-      if (cartItem.amount < 2) {
-        removeFromCart(id);
-      }
-    
+    }
+
+    if (cartItem && cartItem.amount < 2) {
+      removeFromCart(id);
+    }
   };
-    
 
   return (
     <CartContext.Provider
