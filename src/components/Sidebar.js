@@ -46,7 +46,7 @@ const Sidebar = () => {
         })}
 
          
-<Link to='/' className="bg-bluegray-200 flex p-4 justify-center
+<Link to='/dashboard' className="bg-bluegray-200 flex p-4 justify-center
        items-center text-primary w-full font-medium" > View Cart </Link>
       <Link to='/' className="bg-gray-200 flex p-4 justify-center
        items-center text-bluegray-200 w-full font-medium"> Checkout </Link>
