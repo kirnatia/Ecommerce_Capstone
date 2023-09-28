@@ -20,14 +20,14 @@ const Header = () => {
     <header
       className={`${
         isActive ? "bg-white py-4 shadow-md" : "bg-none py-0"
-      } `}
+      } fixed w-full z-10 transition-all `}
     >
       <div className="container mx-auto flex items-center justify-between h-full">
-        <Link to={`/`}>
+        {/* <Link to={`/`}>
           <div className="w-16 sm:w-12">
             <img src={Logo} alt="" className="w-full" />
           </div>
-        </Link>
+        </Link> */}
         <div className="sm:hidden">
           <button
             onClick={() => setIsActive(!isActive)}
