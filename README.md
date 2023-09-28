@@ -25,7 +25,7 @@ As a user, I should be able to:
 
 ## Website URL
 
-[Visit the Website] (https://curious-fudge-55627f.netlify.app/){:target="_blank" rel="noopener noreferrer"}
+[Visit the Website] (https://curious-fudge-55627f.netlify.app/) {:target="_blank" rel="noopener noreferrer"}
 
 ## Introduction
 
