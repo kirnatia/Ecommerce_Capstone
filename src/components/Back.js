@@ -8,12 +8,12 @@ const BackPic = () => {
     <section className="bg-emerald-200 min-h-[400px] md:min-h-screen flex items-center">
       <div className="container mx-auto flex md:flex-row justify-between items-center">
         <div className="md:w-1/2 px-4">
-          <h1 className="text-4xl font-semibold text-gray-800 mb-4 uppercase">
+          <h1 className="text-2xl md:text-4xl font-semibold text-gray-800 mb-4 uppercase">
             Your shopping starts here
             <BsHearts className="text-yellow-200 hover:text-orange-600 transition" />
           </h1>
 
-          <Link to={"/landing"} className="self-start uppercase">
+          <Link to={"/landing"} className="self-start uppercase text-sm md:text-base">
             Explore
           </Link>
         </div>

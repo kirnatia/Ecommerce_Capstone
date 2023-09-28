@@ -21,6 +21,15 @@ const Dashboard = () => {
     navigate("/landing");
   };
 
+  // Add an effect to watch for changes in the authentication status
+  useEffect(() => {
+    const token = localStorage.getItem("Mytoken");
+    if (!token) {
+      // If the token is not present, navigate to the landing page
+      navigate("/landing");
+    }
+  }, [navigate]);
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center">
       <div className="rounded-lg sm:border-2 px-4 lg:px-24 py-16 lg:max-w-xl sm:max-w-md w-full text-center">
@@ -92,7 +101,8 @@ const Dashboard = () => {
           <button
             type="button"
             onClick={logoutHandler}
-            className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-300"
+            className="bg-red-600 hover:bg-red-700 text-white font-bold 
+            py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-300"
           >
             Logout
           </button>

@@ -1,35 +1,40 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
+
 const Login = () => {
   const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [loginSuccess, setLoginSuccess] = useState(false);
+  const [password, setPassword] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState(false);
 
   const payload = {
     username: username,
     password: password,
   };
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
 
     axios
       .post("https://fakestoreapi.com/auth/login", payload)
       .then((response) => {
+        // Assuming the login is successful based on your API response
         const response1 = response;
         localStorage.setItem("stringify", JSON.stringify(response1));
-          localStorage.setItem("Mytoken", response1.data.token);
-          
-          setLoginSuccess(true);
+        localStorage.setItem("Mytoken", response1.data.token);
+
+        // Set loginSuccess to true after a successful login
+        setLoginSuccess(true);
       })
       .catch((error) => {
-      
         console.error("Login error:", error);
       });
   };
-    if (loginSuccess) {
-        return <Navigate to="/dashboard" />;
-    }
+
+  // Redirect to the dashboard if loginSuccess is true
+  if (loginSuccess) {
+    return <Navigate to="/dashboard" />;
+  }
   return (
     <>
       <section className="min-h-screen flex flex-col">
@@ -86,7 +91,14 @@ const Login = () => {
                         text-indigo-600 underline font-semibold
                         hover:text-indigo-800"
               >
-                Create One
+                
+                <Link
+              to="/SignUp"
+              className="font-light text-md text-indigo-600 underline 
+              font-semibold hover:text-indigo-800"
+            >
+              Create One
+            </Link>
               </a>
             </div>
           </div>

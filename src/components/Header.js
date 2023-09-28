@@ -14,53 +14,56 @@ const Header = () => {
     window.addEventListener("scroll", () => {
       window.scrollY > 60 ? setIsActive(true) : setIsActive(false);
     });
-  });
+  }, []);
+
   return (
     <header
       className={`${
-        isActive ? "bg-white py-4 shadow-md" : "bg-none py-6"
-      } fixed w-full z-10 transition-all`}
+        isActive ? "bg-white py-4 shadow-md" : "bg-none py-0"
+      } `}
     >
-      <div
-        className="container mx-auto flex items-center
-      justify-between h-full"
-      >
+      <div className="container mx-auto flex items-center justify-between h-full">
         <Link to={`/`}>
-          <div className="w-[60px] ml-[-20px] mt-[-20px] relative">
-            <img src={Logo} alt="" />
+          <div className="w-16 sm:w-12">
+            <img src={Logo} alt="" className="w-full" />
           </div>
         </Link>
-        <Link to={`/`}>
-          <div className="text-lg sm:text-sm w-[60px] ml-[-20px] mt-[-20px] relative">
-            <span>Home</span>
-          </div>
-        </Link>
-        <Link to={`/landing`}>
-          <div className="text-lg sm:text-sm w-[60px] ml-[-20px] mt-[-10px] relative">
-            <span>All Products</span>
-          </div>
-        </Link>
-        <Link to={`/login`}>
-          <div className="text-lg sm:text-sm w-[60px] ml-[-20px] mt-[-20px] relative">
-            <span>Login</span>
-          </div>
-        </Link>
-        <Link to={`/signup`}>
-          <div className="text-lg sm:text-sm w-[60px] ml-[-20px] mt-[-20px] relative">
-            <span>Register</span>
-          </div>
-        </Link>
-        <div
-          onClick={() => setIsOpen(!isOpen)}
-          className="cursor-pointer flex relative"
-        >
-          <BsBag className="text-2xl" />
-          <div
-            className="bg-orange-500 absolute -right-2 
-          -bottom-2 text-[16px] w-[18px] text-white
-          rounded-full flex justify-center items-center"
+        <div className="sm:hidden">
+          <button
+            onClick={() => setIsActive(!isActive)}
+            className="text-2xl p-2 focus:outline-none"
           >
-            {itemAmount}
+            {isActive ? "Close" : "Menu"}
+          </button>
+        </div>
+        <div
+          className={`sm:flex space-x-4 ${
+            isActive ? "block" : "hidden"
+          } sm:space-x-8`}
+        >
+          <Link to={`/`}>
+            <div className="text-lg sm:text-sm">Home</div>
+          </Link>
+          <Link to={`/landing`}>
+            <div className="text-lg sm:text-sm">All Products</div>
+          </Link>
+          <Link to={`/login`}>
+            <div className="text-lg sm:text-sm">Login</div>
+          </Link>
+          <Link to={`/signup`}>
+            <div className="text-lg sm:text-sm">Register</div>
+          </Link>
+          <Link to={`/dashboard`}>
+            <div className="text-lg sm:text-sm">My profile</div>
+          </Link>
+          <div
+            onClick={() => setIsOpen(!isOpen)}
+            className="cursor-pointer flex relative"
+          >
+            <BsBag className="text-2xl" />
+            <div className="bg-orange-500 absolute -right-2 -bottom-2 text-[16px] w-[18px] text-white rounded-full flex justify-center items-center">
+              {itemAmount}
+            </div>
           </div>
         </div>
       </div>
