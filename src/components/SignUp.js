@@ -58,7 +58,8 @@ const Signup = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700"
+                className="bg-gray-200 border-2 border-gray-100 focus:outline-none 
+                bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700"
                 placeholder="Email"
               />
             </div>
@@ -69,7 +70,8 @@ const Signup = () => {
                 value={formData.username}
                 onChange={handleChange}
                 required
-                className="bg-gray-200 border-2 border-gray-100 focus:outline-none bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700"
+                className="bg-gray-200 border-2 border-gray-100 focus:outline-none 
+                bg-gray-100 block w-full py-2 px-4 rounded-lg focus:border-gray-700"
                 placeholder="Username"
               />
             </div>

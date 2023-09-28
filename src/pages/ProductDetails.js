@@ -33,7 +33,8 @@ const ProductDetails = () => {
             <h1 className="text-[26px] font-medium mb-2 max-w-[450px] max-auto">
               {title}
             </h1>
-            <div className="text-xl py-2 px-8 bg-yellow-200 text-gray-800 font-medium mb-6 items-center justify-center">
+            <div className="text-xl py-2 px-8 bg-yellow-200 text-gray-800 
+            font-medium mb-6 items-center justify-center">
               ${price}
             </div>
             <p className="mb-8">{description}</p>
@@ -47,7 +48,8 @@ const ProductDetails = () => {
             <br></br>
             <Link
               to="/landing"
-              className="font-light text-md text-indigo-600 underline font-semibold hover:text-indigo-800"
+              className="font-light text-md text-indigo-600 underline 
+              font-semibold hover:text-indigo-800"
             >
               <button
                 onClick={() => goBack()}

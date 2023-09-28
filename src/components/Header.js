@@ -7,7 +7,7 @@ import Logo from "../img/Logo.png";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
-  const [showMenu, setShowMenu] = useState(false); // Added state to control mobile menu visibility
+  const [showMenu, setShowMenu] = useState(false);
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
 
@@ -17,62 +17,70 @@ const Header = () => {
     });
   }, []);
 
-  // Toggle the mobile menu when the "Menu" button is clicked
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
 
   return (
-    <header
-      // className={`${
-      //   isActive ? "bg-white py-4 shadow-md" : "bg-none py-0"
-      // } fixed w-full z-10 transition-all `}
-    >
-      <div className="container mx-auto flex items-center justify-between h-full">
-        <Link to={`/`}>
-          <div className="w-16 sm:w-12">
-            <img src={Logo} alt="" className="w-full" />
-          </div>
+    <header className="bg-emerald-200">
+      <div className="container mx-auto py-4 flex items-center justify-between h-full">
+        <Link to={`/`} className="flex items-center">
+          <img src={Logo} alt="" className="w-16 h-16" />
         </Link>
+        <div className="hidden sm:flex space-x-4">
+      
+          <Link to={`/`} className="text-lg sm:text-base">
+            Home
+          </Link>
+          <Link to={`/landing`} className="text-lg sm:text-base">
+            All Products
+          </Link>
+          <Link to={`/login`} className="text-lg sm:text-base">
+            Login
+          </Link>
+          <Link to={`/signup`} className="text-lg sm:text-base">
+            Register
+          </Link>
+          <Link to={`/dashboard`} className="text-lg sm:text-base">
+            My profile
+          </Link>
+        </div>
         <div className="sm:hidden">
           <button
             onClick={() => {
               setIsActive(!isActive);
-              toggleMenu(); // Toggle mobile menu when clicking "Menu"
+              toggleMenu();
             }}
-            className="text-2xl p-2 focus:outline-none"
+            className="text-2xl p-1 focus:outline-none"
           >
             {isActive ? "Close" : "Menu"}
           </button>
         </div>
+        <div className={`sm:hidden ${showMenu ? "block" : "hidden"}`}>
+          <Link to={`/`} className="block text-lg text-sm font-normal">
+            Home
+          </Link>
+          <Link to={`/landing`} className="block text-lg text-sm font-normal">
+            All Products
+          </Link>
+          <Link to={`/login`} className="block text-lg text-sm font-normal">
+            Login
+          </Link>
+          <Link to={`/signup`} className="block text-lg text-sm font-normal">
+            Register
+          </Link>
+          <Link to={`/dashboard`} className="block text-lg text-sm font-normal">
+            My profile
+          </Link>
+        </div>
         <div
-          className={`sm:flex space-x-4 ${
-            showMenu ? "block" : "hidden" // Use showMenu state to control visibility
-          } sm:space-x-8`}
+          onClick={() => setIsOpen(!isOpen)}
+          className="cursor-pointer flex relative"
         >
-          <Link to={`/`}>
-            <div className="text-lg sm:text-sm">Home</div>
-          </Link>
-          <Link to={`/landing`}>
-            <div className="text-lg sm:text-sm">All Products</div>
-          </Link>
-          <Link to={`/login`}>
-            <div className="text-lg sm:text-sm">Login</div>
-          </Link>
-          <Link to={`/signup`}>
-            <div className="text-lg sm:text-sm">Register</div>
-          </Link>
-          <Link to={`/dashboard`}>
-            <div className="text-lg sm:text-sm">My profile</div>
-          </Link>
-          <div
-            onClick={() => setIsOpen(!isOpen)}
-            className="cursor-pointer flex relative"
-          >
-            <BsBag className="text-2xl" />
-            <div className="bg-orange-500 absolute -right-2 -bottom-2 text-[16px] w-[18px] text-white rounded-full flex justify-center items-center">
-              {itemAmount}
-            </div>
+          <BsBag className="text-2xl" />
+          <div className="bg-orange-400 absolute -right-2 -bottom-2 text-[16px] 
+          w-[18px] text-white rounded-full flex justify-center items-center">
+            {itemAmount}
           </div>
         </div>
       </div>

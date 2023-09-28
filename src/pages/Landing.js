@@ -7,6 +7,7 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedPriceRange, setSelectedPriceRange] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [filteredProducts, setFilteredProducts] = useState(products);
 
   const filterCategoryOptions = [
     { value: '', label: 'All Categories' },
@@ -26,34 +27,108 @@ const Home = () => {
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
+    filterProducts(e.target.value, selectedPriceRange, searchQuery);
   };
 
   const handlePriceRangeChange = (e) => {
     setSelectedPriceRange(e.target.value);
+    filterProducts(selectedCategory, e.target.value, searchQuery);
   };
 
   const handleSearchInputChange = (e) => {
     setSearchQuery(e.target.value);
+    filterProducts(selectedCategory, selectedPriceRange, e.target.value);
   };
 
-  const filteredProducts = products.filter((product) => {
-    const categoryMatch =
-      selectedCategory === '' || product.category === selectedCategory;
-    if (selectedPriceRange === '') {
-      return categoryMatch && product.title.toLowerCase().includes(searchQuery.toLowerCase());
-    }
-    if (selectedPriceRange === '201') {
-      return categoryMatch && product.price > 200 && product.title.toLowerCase().includes(searchQuery.toLowerCase());
-    }
-    const [min, max] = selectedPriceRange.split('-').map(Number);
-    return categoryMatch && product.price >= min && product.price <= max && product.title.toLowerCase().includes(searchQuery.toLowerCase());
-  });
+  const filterProducts = (category, priceRange, query) => {
+    const filtered = products.filter((product) => {
+      const categoryMatch = category === '' || product.category === category;
+      if (priceRange === '') {
+        return categoryMatch && product.title.toLowerCase().includes(query.toLowerCase());
+      }
+      if (priceRange === '201') {
+        return categoryMatch && product.price > 200 && product.title.toLowerCase().includes(query.toLowerCase());
+      }
+      const [min, max] = priceRange.split('-').map(Number);
+      return categoryMatch && product.price >= min && product.price <= max && product.title.toLowerCase().includes(query.toLowerCase());
+    });
+    setFilteredProducts(filtered);
+  };
+
+  // Sort products by price in ascending order
+  const sortByPriceAsc = () => {
+    const sortedProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
+    setFilteredProducts(sortedProducts);
+  };
+
+  // Sort products by price in descending order
+  const sortByPriceDesc = () => {
+    const sortedProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
+    setFilteredProducts(sortedProducts);
+  };
+
+  // Sort products by name in ascending order
+  const sortByNameAsc = () => {
+    const sortedProducts = [...filteredProducts].sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
+    setFilteredProducts(sortedProducts);
+  };
+
+  // Sort products by name in descending order
+  const sortByNameDesc = () => {
+    const sortedProducts = [...filteredProducts].sort((a, b) =>
+      b.title.localeCompare(a.title)
+    );
+    setFilteredProducts(sortedProducts);
+  };
 
   return (
     <div>
       <section className="py-16 bg-yellow-50">
         <div className="container mx-auto">
-          {/* Filters and Search bar side by side */}
+          {/* Sorting options */}
+          <div className="mb-5">
+            <label className="block text-sm font-medium text-gray-600">
+              Sort by:
+            </label>
+            <div className="flex space-x-2">
+              <button
+                onClick={sortByPriceAsc}
+                className="px-3 py-2 border border-gray-300 rounded-md 
+                shadow-sm focus:outline-none focus:ring focus:ring-blue-300
+                block text-lg text-sm font-normal"
+              >
+                Price (Low to High)
+              </button>
+              <button
+                onClick={sortByPriceDesc}
+                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                focus:outline-none focus:ring focus:ring-blue-300
+                block text-lg text-sm font-normal"
+              >
+                Price (High to Low)
+              </button>
+              <button
+                onClick={sortByNameAsc}
+                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                focus:outline-none focus:ring focus:ring-blue-300
+                block text-lg text-sm font-normal"
+              >
+                Name (A to Z)
+              </button>
+              <button
+                onClick={sortByNameDesc}
+                className="px-3 py-2 border border-gray-300 rounded-md shadow-sm 
+                focus:outline-none focus:ring focus:ring-blue-300 
+                block text-lg text-sm font-normal"
+              >
+                Name (Z to A)
+              </button>
+            </div>
+          </div>
+
+       
           <div className="flex flex-wrap space-x-2 mb-5">
             {/* Filtering options */}
             <div className="w-full md:w-1/2 lg:w-1/4">
@@ -65,7 +140,8 @@ const Home = () => {
                 name="category"
                 value={selectedCategory}
                 onChange={handleCategoryChange}
-                className="w-full px-3 py-2 border border-white -300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+                className="w-full px-3 py-2 border border-white -300 
+                rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
               >
                 {filterCategoryOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -75,7 +151,8 @@ const Home = () => {
               </select>
             </div>
             <div className="w-full md:w-1/2 lg:w-1/4">
-              <label htmlFor="priceRange" className="block text-sm font-medium text-gray-600">
+              <label htmlFor="priceRange" className="block text-sm 
+              font-medium text-gray-600">
                 Filter by Price:
               </label>
               <select
@@ -83,7 +160,8 @@ const Home = () => {
                 name="priceRange"
                 value={selectedPriceRange}
                 onChange={handlePriceRangeChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+                className="w-full px-3 py-2 border border-gray-300 
+                rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
               >
                 {filterPriceOptions.map((option) => (
                   <option key={option.value} value={option.value}>
@@ -103,13 +181,15 @@ const Home = () => {
                 name="search"
                 value={searchQuery}
                 onChange={handleSearchInputChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
-                placeholder="Search by product title"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md 
+                shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+                placeholder="Search product"
               />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[20px] max-w-sm mx-auto md:max-w-none md:mx-0 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 
+          gap-[10px] max-w-sm mx-auto md:max-w-none md:mx-0 ">
             {filteredProducts.map((product) => (
               <Product key={product.id} product={product} />
             ))}

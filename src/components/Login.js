@@ -18,12 +18,12 @@ const Login = () => {
     axios
       .post("https://fakestoreapi.com/auth/login", payload)
       .then((response) => {
-        // Assuming the login is successful based on your API response
+      
         const response1 = response;
         localStorage.setItem("stringify", JSON.stringify(response1));
         localStorage.setItem("Mytoken", response1.data.token);
 
-        // Set loginSuccess to true after a successful login
+      
         setLoginSuccess(true);
       })
       .catch((error) => {
@@ -31,7 +31,7 @@ const Login = () => {
       });
   };
 
-  // Redirect to the dashboard if loginSuccess is true
+
   if (loginSuccess) {
     return <Navigate to="/dashboard" />;
   }

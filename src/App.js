@@ -14,7 +14,6 @@ import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import Admin from "./components/Admin";
-// import CartItem from "./components/CartItem";
 import Landing from "./pages/Landing"
 
 

@@ -67,7 +67,7 @@ const CartItem = ({ item }) => {
 
               {/* Rating */}
               <div className="flex-1 flex justify-end items-center">
-  {/* Display the rating (you can use your own rating component) */}
+  
   <div className="flex items-center">
     <span className="mr-1">Rating:</span>
     <span className="text-yellow-500">
