@@ -25,7 +25,7 @@ As a user, I should be able to:
 
 ## Website URL
 
-[Visit the Website](https://curious-fudge-55627f.netlify.app/landing)
+[Visit the Website] (https://curious-fudge-55627f.netlify.app/landing)
 
 ## Introduction
 
@@ -49,7 +49,7 @@ The website features a pastel color scheme and offers an easy-to-use interface.
 - Front-end: React, JavaScript, HTML, Tailwind CSS
 - Back-end: Node.js, Express.js
 - Data Fetching: Axios
-- Third-Party API: [Link to fakestoreapi](https://fakestoreapi.com/)
+- Third-Party API: [Link to fakestoreapi] (https://fakestoreapi.com/)
 
 ## Getting Started
 
