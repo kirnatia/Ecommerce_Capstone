@@ -1,6 +1,6 @@
 # E-Commerce Capstone Project
 
-Welcome to our E-Commerce web application! This is the final project of the Fullstack Academy web development boot camp. This project corresponds to Tier One of the Minimum Viable Product (MVP).
+Welcome to my E-Commerce web application! This is the final project of the Fullstack Academy web development boot camp and corresponds to Tier One of the Minimum Viable Product (MVP).
 
 ## Requirements
 
@@ -17,10 +17,10 @@ As a user, I should be able to:
 
 - Add an item to my cart.
 - Have a persistent cart to revisit and pick up where I left off.
-  - For example, if I add items to my cart, close my window, and go back to the website later, those items should persist.
+- For example, if I add items to my cart, close my window, and go back to the website later, those items should persist.
 - Edit my cart if I change my mind:
-  - Change the quantity of a product in my cart.
-  - Remove a product from my cart.
+- Change the quantity of a product in my cart.
+- Remove a product from my cart.
 - "Check out" the items in my cart, i.e., purchase the products.
 
 ## Website URL
