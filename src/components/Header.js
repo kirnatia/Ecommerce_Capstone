@@ -7,6 +7,7 @@ import Logo from "../img/Logo.png";
 
 const Header = () => {
   const [isActive, setIsActive] = useState(false);
+  const [showMenu, setShowMenu] = useState(false); // Added state to control mobile menu visibility
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   const { itemAmount } = useContext(CartContext);
 
@@ -16,21 +17,29 @@ const Header = () => {
     });
   }, []);
 
+  // Toggle the mobile menu when the "Menu" button is clicked
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
   return (
     <header
-      className={`${
-        isActive ? "bg-white py-4 shadow-md" : "bg-none py-0"
-      } fixed w-full z-10 transition-all `}
+      // className={`${
+      //   isActive ? "bg-white py-4 shadow-md" : "bg-none py-0"
+      // } fixed w-full z-10 transition-all `}
     >
       <div className="container mx-auto flex items-center justify-between h-full">
-        {/* <Link to={`/`}>
+        <Link to={`/`}>
           <div className="w-16 sm:w-12">
             <img src={Logo} alt="" className="w-full" />
           </div>
-        </Link> */}
+        </Link>
         <div className="sm:hidden">
           <button
-            onClick={() => setIsActive(!isActive)}
+            onClick={() => {
+              setIsActive(!isActive);
+              toggleMenu(); // Toggle mobile menu when clicking "Menu"
+            }}
             className="text-2xl p-2 focus:outline-none"
           >
             {isActive ? "Close" : "Menu"}
@@ -38,7 +47,7 @@ const Header = () => {
         </div>
         <div
           className={`sm:flex space-x-4 ${
-            isActive ? "block" : "hidden"
+            showMenu ? "block" : "hidden" // Use showMenu state to control visibility
           } sm:space-x-8`}
         >
           <Link to={`/`}>
