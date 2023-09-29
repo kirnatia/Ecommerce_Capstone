@@ -39,8 +39,9 @@ Our E-Commerce website allows users to browse and purchase products with ease.
 - Sort products by name and price in both ascending (ACS) and descending (DESC) order.
 - Filter products by category and/or price range.
 - Use the search bar to find specific items.
+- If you would like to use login feature you can pick one of these fake accounts: 
 
-## User Interface
+## User Interface 
 
 The website features a pastel color scheme and offers an easy-to-use interface.
 
