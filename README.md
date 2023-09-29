@@ -47,8 +47,7 @@ The website features a pastel color scheme and offers an easy-to-use interface.
 
 ## Technologies Used
 
-- Front-end: React, JavaScript, HTML, Tailwind CSS
-- Back-end: Node.js, Express.js
+- NPM, React, JavaScript, Tailwind CSS, 
 - Data Fetching: Axios
 - Third-Party API: [Link to fakestoreapi] (https://fakestoreapi.com/)
 
@@ -58,7 +57,7 @@ To access the website, simply click on the "Visit the Website" link above. You d
 
 ## Contributing
 
-While this project serves as my first web application and was created as part of the boot camp capstone, I appreciate any feedback or suggestions. Additionally, any improvement advice is very welcome. If you'd like to contribute or have ideas for improvements, please contact me or visit the GitHub repository.
+While this project serves as my first web application and was created as part of the boot camp capstone, I am going to add more features to it.  At this point any improvement advice is very welcome. If you'd like to contribute or have ideas for improvements, please contact me or visit the GitHub repository.
 
 ## License
 
